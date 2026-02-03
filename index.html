@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>JobFlow | Job Application Tracker</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <h1>JobFlow</h1>
+    <p>Track your job applications & interviews in one place</p>
+  </header>
+
+  <!-- ================= ADD JOB FORM ================= -->
+  <section id="add-job">
+    <h2>Add Job Application</h2>
+
+    <form id="jobForm">
+      <input type="text" id="company" placeholder="Company Name" required />
+      <input type="text" id="role" placeholder="Job Role" required />
+      <input type="date" id="dateApplied" required />
+
+      <select id="status">
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Offer">Offer</option>
+        <option value="Rejected">Rejected</option>
+      </select>
+
+      <button type="submit">Add Application</button>
+    </form>
+  </section>
+
+  <!-- ================= FILTERS ================= -->
+  <section id="filters">
+    <h2>Filter Applications</h2>
+
+    <select id="statusFilter">
+      <option value="All">All</option>
+      <option value="Applied">Applied</option>
+      <option value="Interview">Interview</option>
+      <option value="Offer">Offer</option>
+      <option value="Rejected">Rejected</option>
+    </select>
+
+    <input type="text" id="search" placeholder="Search by company or role" />
+  </section>
+
+  <!-- ================= APPLICATION LIST ================= -->
+  <section id="applications">
+    <h2>Your Applications</h2>
+
+    <ul id="applicationList">
+      <!-- Job cards will come here dynamically -->
+    </ul>
+  </section>
+
+  <!-- ================= DASHBOARD ================= -->
+  <section id="dashboard">
+    <h2>Dashboard</h2>
+
+    <p>Total Applications: <span id="totalCount">0</span></p>
+    <p>Interviews Scheduled: <span id="interviewCount">0</span></p>
+    <p>Offers Received: <span id="offerCount">0</span></p>
+  </section>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
