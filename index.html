@@ -1,75 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>JobFlow | Job Application Tracker</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobFlow - Job Application Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <!-- ================= HEADER ================= -->
-  <header>
-    <h1>JobFlow</h1>
-    <p>Track your job applications & interviews in one place</p>
-  </header>
+    <header>
+        <h1>JobFlow</h1>
+        <p>Track your job applications efficiently</p>
+    </header>
 
-  <!-- ================= ADD JOB FORM ================= -->
-  <section id="add-job">
-    <h2>Add Job Application</h2>
+    <main>
+        <section class="card" id="loginSection">
+            <h2>Login</h2>
+            <div class="form-group">
+                <input type="text" id="username" placeholder="Username" autocomplete="username">
+                <input type="password" id="password" placeholder="Password" autocomplete="current-password">
+                <button onclick="login()">Login</button>
+            </div>
+            <p id="loginMessage" class="message"></p>
+        </section>
 
-    <form id="jobForm">
-      <input type="text" id="company" placeholder="Company Name" required />
-      <input type="text" id="role" placeholder="Job Role" required />
-      <input type="date" id="dateApplied" required />
+        <section class="card" id="addJobSection">
+            <h2 id="formTitle">Add Job Application</h2>
+            <div class="form-group">
+                <input type="text" id="company" placeholder="Company Name" required>
+                <input type="text" id="role" placeholder="Job Role" required>
+                <input type="text" id="status" placeholder="Status (e.g., Applied, Interview, Rejected)" required>
+                <input type="date" id="date" required>
+                <div class="button-group">
+                    <button onclick="addJob()" id="submitBtn">Add Application</button>
+                    <button onclick="cancelEdit()" id="cancelBtn" style="display:none;">Cancel</button>
+                </div>
+            </div>
+        </section>
 
-      <select id="status">
-        <option value="Applied">Applied</option>
-        <option value="Interview">Interview</option>
-        <option value="Offer">Offer</option>
-        <option value="Rejected">Rejected</option>
-      </select>
+        <section class="card" id="jobsSection">
+            <h2>My Applications</h2>
+            <div id="jobList" class="job-list">
+                <p class="loading">Loading applications...</p>
+            </div>
+        </section>
+    </main>
 
-      <button type="submit">Add Application</button>
-    </form>
-  </section>
+    <footer>
+        <p>&copy; 2024 JobFlow - Built with ❤️</p>
+    </footer>
 
-  <!-- ================= FILTERS ================= -->
-  <section id="filters">
-    <h2>Filter Applications</h2>
-
-    <select id="statusFilter">
-      <option value="All">All</option>
-      <option value="Applied">Applied</option>
-      <option value="Interview">Interview</option>
-      <option value="Offer">Offer</option>
-      <option value="Rejected">Rejected</option>
-    </select>
-
-    <input type="text" id="search" placeholder="Search by company or role" />
-  </section>
-
-  <!-- ================= APPLICATION LIST ================= -->
-  <section id="applications">
-    <h2>Your Applications</h2>
-
-    <ul id="applicationList">
-      <!-- Job cards will come here dynamically -->
-    </ul>
-  </section>
-
-  <!-- ================= DASHBOARD ================= -->
-  <section id="dashboard">
-    <h2>Dashboard</h2>
-
-    <p>Total Applications: <span id="totalCount">0</span></p>
-    <p>Interviews Scheduled: <span id="interviewCount">0</span></p>
-    <p>Offers Received: <span id="offerCount">0</span></p>
-  </section>
-
-  <!-- JS -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

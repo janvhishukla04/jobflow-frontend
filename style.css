@@ -1,73 +1,254 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #f4f6f8;
-  padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
 }
 
 header {
-  text-align: center;
-  margin-bottom: 30px;
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
 }
 
 header h1 {
-  font-size: 36px;
-  color: #333;
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 header p {
-  color: #666;
+    font-size: 18px;
+    opacity: 0.9;
 }
 
-section {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+main {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-h2 {
-  margin-bottom: 10px;
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
 }
 
-form {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-input, select, button {
-  padding: 8px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.card h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
 }
 
 button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
+    padding: 12px 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex: 1;
 }
 
 button:hover {
-  background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
-#applications ul {
-  list-style: none;
-  margin-top: 10px;
+button:active {
+    transform: translateY(0);
 }
 
-#applications li {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+#cancelBtn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
-#dashboard p {
-  margin: 5px 0;
+.job-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.job-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 5px solid #667eea;
+    transition: all 0.3s ease;
+}
+
+.job-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.job-company {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.job-status {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.status-applied {
+    background: #cfe2ff;
+    color: #084298;
+}
+
+.status-interview {
+    background: #fff3cd;
+    color: #997404;
+}
+
+.status-rejected {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.status-accepted {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.job-details {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.job-role {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.job-date {
+    font-size: 14px;
+    font-style: italic;
+}
+
+.job-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.job-actions button {
+    padding: 8px 15px;
+    font-size: 14px;
+    flex: 0;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    color: #333;
+}
+
+.delete-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.success {
+    background: #d1e7dd;
+    color: #0f5132;
+}
+
+.error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 36px;
+    }
+    
+    .card {
+        padding: 20px;
+    }
+    
+    .job-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .job-actions {
+        flex-direction: column;
+    }
+    
+    .job-actions button {
+        width: 100%;
+    }
 }
