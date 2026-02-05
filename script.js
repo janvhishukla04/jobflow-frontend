@@ -3,28 +3,67 @@ const API = "https://jobflow-backend-7wjj.onrender.com";
 let jobs = [];
 let editingId = null;
 
+// Get DOM elements first
+const companyInput = document.getElementById("company");
+const roleInput = document.getElementById("role");
+const statusInput = document.getElementById("status");
+const dateInput = document.getElementById("date");
+
 async function loadJobs() {
-  const res = await fetch(`${API}/jobs`);
-  jobs = await res.json();
-  renderJobs();
+  try {
+    const res = await fetch(`${API}/jobs`);
+    jobs = await res.json();
+    renderJobs();
+  } catch (error) {
+    console.error("Error loading jobs:", error);
+    alert("Failed to load jobs. Check if backend is running.");
+  }
 }
 
 function renderJobs() {
   const list = document.getElementById("jobList");
   list.innerHTML = "";
 
+  if (jobs.length === 0) {
+    list.innerHTML = '<p style="text-align: center; opacity: 0.6;">No jobs yet. Add your first one!</p>';
+    return;
+  }
+
   jobs.forEach(job => {
     const div = document.createElement("div");
     div.className = "job";
+    
+    // Status badge color
+    const statusClass = {
+      'Applied': 'status-applied',
+      'Interview': 'status-interview',
+      'Offer': 'status-offer',
+      'Rejected': 'status-rejected'
+    }[job.status] || '';
+
     div.innerHTML = `
-      <span><b>${job.company}</b> | ${job.role} | ${job.status} | ${job.applied_date}</span>
+      <div class="job-info">
+        <div class="job-header">
+          <span class="company-name">${job.company}</span>
+          <span class="badge ${statusClass}">${job.status}</span>
+        </div>
+        <div class="job-details">
+          <span class="role">${job.role}</span>
+          <span class="date">📅 ${formatDate(job.applied_date)}</span>
+        </div>
+      </div>
       <div class="actions">
-        <button class="edit" onclick="editJob(${job.id})">Edit</button>
-        <button class="delete" onclick="deleteJob(${job.id})">Delete</button>
+        <button class="edit" onclick="editJob(${job.id})">✏️ Edit</button>
+        <button class="delete" onclick="deleteJob(${job.id})">🗑️ Delete</button>
       </div>
     `;
     list.appendChild(div);
   });
+}
+
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
 async function addJob() {
@@ -34,44 +73,61 @@ async function addJob() {
   const date = dateInput.value;
 
   if (!company || !role || !date) {
-    alert("Fill all fields");
+    alert("⚠️ Please fill all fields!");
     return;
   }
 
   const payload = { company, role, status, applied_date: date };
 
-  if (editingId) {
-    await fetch(`${API}/jobs/${editingId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-    editingId = null;
-  } else {
-    await fetch(`${API}/jobs`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-  }
+  try {
+    if (editingId) {
+      await fetch(`${API}/jobs/${editingId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      editingId = null;
+    } else {
+      await fetch(`${API}/jobs`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+    }
 
-  clearForm();
-  loadJobs();
+    clearForm();
+    await loadJobs(); // Reload jobs after adding
+  } catch (error) {
+    console.error("Error adding job:", error);
+    alert("Failed to add job. Please try again.");
+  }
 }
 
 function editJob(id) {
   const job = jobs.find(j => j.id === id);
+  if (!job) return;
+  
   editingId = id;
 
   companyInput.value = job.company;
   roleInput.value = job.role;
   statusInput.value = job.status;
   dateInput.value = job.applied_date;
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 async function deleteJob(id) {
-  await fetch(`${API}/jobs/${id}`, { method: "DELETE" });
-  loadJobs();
+  if (!confirm("Are you sure you want to delete this job?")) return;
+
+  try {
+    await fetch(`${API}/jobs/${id}`, { method: "DELETE" });
+    await loadJobs();
+  } catch (error) {
+    console.error("Error deleting job:", error);
+    alert("Failed to delete job. Please try again.");
+  }
 }
 
 function clearForm() {
@@ -79,11 +135,8 @@ function clearForm() {
   roleInput.value = "";
   statusInput.value = "Applied";
   dateInput.value = "";
+  editingId = null;
 }
 
-const companyInput = document.getElementById("company");
-const roleInput = document.getElementById("role");
-const statusInput = document.getElementById("status");
-const dateInput = document.getElementById("date");
-
+// Load jobs when page loads
 loadJobs();
