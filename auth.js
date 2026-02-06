@@ -102,23 +102,29 @@ signupForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("signupPassword").value;
 
   // Validation
-  if (!username || !email || !password) {
-    errorEl.textContent = "❌ Please fill in all fields";
-    errorEl.style.color = "#ef4444";
-    return;
-  }
+if (!username || !email || !password) {
+  errorEl.textContent = "❌ Please fill in all fields";
+  errorEl.style.color = "#ef4444";
+  return;
+}
 
-  if (password.length < 6) {
-    errorEl.textContent = "❌ Password must be at least 6 characters";
-    errorEl.style.color = "#ef4444";
-    return;
-  }
+if (password.length < 6) {
+  errorEl.textContent = "❌ Password must be at least 6 characters";
+  errorEl.style.color = "#ef4444";
+  return;
+}
 
-  if (username.length < 3) {
-    errorEl.textContent = "❌ Username must be at least 3 characters";
-    errorEl.style.color = "#ef4444";
-    return;
-  }
+if (password.length > 72) {
+  errorEl.textContent = "❌ Password cannot exceed 72 characters";
+  errorEl.style.color = "#ef4444";
+  return;
+}
+
+if (username.length < 3) {
+  errorEl.textContent = "❌ Username must be at least 3 characters";
+  errorEl.style.color = "#ef4444";
+  return;
+}
 
   // Disable button and show loading
   submitBtn.disabled = true;
