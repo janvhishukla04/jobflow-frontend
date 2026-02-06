@@ -665,3 +665,537 @@ header {
     justify-content: center;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: white;
+  padding: 0;
+}
+
+/* ==================== HEADER ==================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.user-info span {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.logout-btn {
+  background: rgba(255, 107, 107, 0.9);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 107, 107, 1);
+  transform: translateY(-2px);
+}
+
+/* ==================== CONTROLS SECTION ==================== */
+.controls {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 200px auto;
+  gap: 15px;
+  align-items: center;
+}
+
+.controls input,
+.controls select {
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.controls input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.controls input:focus,
+.controls select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.controls select {
+  cursor: pointer;
+}
+
+.controls select option {
+  background: #667eea;
+  color: white;
+}
+
+.controls button {
+  padding: 14px 30px;
+  background: linear-gradient(135deg, #00d4ff, #0099ff);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.controls button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.5);
+}
+
+/* ==================== FILTER SECTION ==================== */
+.filter-section {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 15px;
+}
+
+.filter-section input,
+.filter-section select {
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.filter-section input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.filter-section input:focus,
+.filter-section select:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.filter-section select {
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.filter-section select option {
+  background: #667eea;
+  color: white;
+}
+
+/* ==================== SECTION TITLE ==================== */
+.section-title {
+  max-width: 1200px;
+  margin: 30px auto 20px;
+  padding: 0 40px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* ==================== JOB LIST ==================== */
+#jobList {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.job {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 20px 25px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.job:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateX(5px);
+}
+
+.job-info {
+  flex: 1;
+}
+
+.job-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.company-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+}
+
+.badge {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.status-applied {
+  background: rgba(59, 130, 246, 0.3);
+  color: #dbeafe;
+}
+
+.status-interview {
+  background: rgba(245, 158, 11, 0.3);
+  color: #fef3c7;
+}
+
+.status-offer {
+  background: rgba(16, 185, 129, 0.3);
+  color: #d1fae5;
+}
+
+.status-rejected {
+  background: rgba(239, 68, 68, 0.3);
+  color: #fecaca;
+}
+
+.job-details {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.role {
+  font-weight: 500;
+}
+
+.date {
+  opacity: 0.8;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.actions .edit {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+
+.actions .edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.4);
+}
+
+.actions .delete {
+  background: linear-gradient(135deg, #f43f5e, #dc2626);
+  color: white;
+}
+
+.actions .delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(244, 63, 94, 0.4);
+}
+
+/* ==================== EMPTY STATE ==================== */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.7;
+  font-size: 16px;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 1024px) {
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .controls button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .controls,
+  .filter-section,
+  .section-title,
+  #jobList {
+    padding: 0 20px;
+  }
+  
+  .controls {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .job {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .job-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .actions {
+    width: 100%;
+  }
+  
+  .actions button {
+    flex: 1;
+  }
+}
+
+/* ==================== AUTH PAGE STYLES (login.html) ==================== */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.auth-card {
+  background: white;
+  padding: 50px 40px;
+  border-radius: 24px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.auth-title {
+  font-size: 42px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2d3748;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-subtitle {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 35px;
+  font-size: 16px;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  background: #f7fafc;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: #4a5568;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.auth-tab.active {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 16px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  background: white;
+  color: #2d3748;
+  transition: all 0.3s;
+  box-sizing: border-box;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  padding-right: 50px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border-radius: 6px;
+}
+
+.password-toggle:hover {
+  background: #f7fafc;
+}
+
+.eye-icon {
+  user-select: none;
+}
+
+.auth-submit {
+  padding: 16px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.auth-submit:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.auth-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.auth-error {
+  font-size: 14px;
+  text-align: center;
+  min-height: 20px;
+  font-weight: 500;
+  margin: 0;
+  color: #e53e3e;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 40px 25px;
+  }
+  
+  .auth-title {
+    font-size: 36px;
+  }
+}
